@@ -1,0 +1,187 @@
+
+
+<div #container  class=" min-h-screen grid grid-cols-6">
+    
+    <div  class=" min-h-screen col-span-1">
+        <div class="min-h-screen bg-gray-100 flex items-start justify-start font-sans overflow-hidden">
+            <div class="min-h-screen w-full lg:h-max lg:w-full">
+                <div class="bg-gray shadow-lg border border-grey-500 rounded my-4 ml-2  mr-1">
+                    <div class="w-full md:w-6/7 px-3 mb-3 ">
+                        <app-auto-fill-select #language label="language" [options]="langs"  (selectedChange)="onLanguageChange($event)"></app-auto-fill-select>
+                        
+                    </div>
+                    
+                    <div class="w-full md:w-6/7 px-3 mb-3 ">
+                        <app-auto-fill-select label="table headers" (selectedChange)="headerChanger($event)" [options]="exampleHeaders"></app-auto-fill-select>
+                        <div class="flex items-center  mb-4  grid-cols-1">
+                            <div>
+                                <input id="default-checkbox" (click)="onSwitchOne()" type="checkbox"  class=" ml-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="default-checkbox" class="mr-2 ml-2 text-sm font-small text-gray-900 dark:text-gray-600">Manage Headers</label>
+                                <div >
+                                    <div [hidden]="!switchOne" id="dropdownDefaultCheckbox" class="items-center z-10 ml-3 w-36 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-500 dark:divide-gray-600">
+                                        <form [formGroup]="headersForm">
+                                            <ul class="p-3 space-y-3 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownCheckboxButton">
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="categories" id="checkbox-item-1" type="checkbox" value="0" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Categories</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="language" id="checkbox-item-1" type="checkbox" value="1" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Language</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="status" id="checkbox-item-1" type="checkbox" value="2" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Status</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="noFiles" id="checkbox-item-1" type="checkbox" value="3" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">No. Files</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="updatedAt" id="checkbox-item-1" type="checkbox" value="4" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Update at</label>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="flex items-center">
+                                                        <input formControlName="updatedBy" id="checkbox-item-1" type="checkbox" value="5" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                        <label for="checkbox-item-1" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Updated By</label>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    
+                    <form [formGroup]="filterForm">
+                    <div class="flex flex-wrap-mx-3 mb-3">
+                        <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                                Search
+                            </label>
+                            <input formControlName="search" class="appearance-none block w-full text-sm bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  >
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap-mx-3 mb-3">
+                        <div  class="w-full px-3">
+                            <label (click)="toggleFilter()" class="flex justify-center items-center  uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+                                filters
+                                <a class="m-1"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"><path class="fill-gray-700" d="M1 0h22l-9 14.094v9.906l-4-2v-7.906z"/></svg></a>
+                            </label>
+                            <div [hidden]="!filterToggled">
+                                
+                                    <div class="flex flex-wrap-mx-3 mb-3">
+                                        <app-auto-fill-check-box label="categories" [values]="categoriesForCheck"></app-auto-fill-check-box>
+                                    </div>
+                                    <div class="flex flex-wrap-mx-3 mb-3">
+                                        <app-auto-fill-check-box label="status" [values]="exampleStatus"></app-auto-fill-check-box>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  class="min-h-screen col-span-5 height-max">
+        
+        <div class="min-h-screen px-1 bg-gray-100 flex items-start justify-start font-sans overflow-hidden">
+            <div class="min-h-screen w-full lg:w-full">
+                <div class="bg-white shadow-md rounded my-4 m-1 cdk-virtual-scroll-data-source-example">
+                <!--  table Head-->
+                <cdk-virtual-scroll-viewport  ngClass="hidden_scrollbar" class="example-viewport"   style="height: 64px; " #view1 itemSize="auto" >
+                
+                    <table   class="min-w-max w-full table-auto" >
+                        <thead class="text-gray-600 text-sm font-light" >
+                            <tr  class="bg-gray-200 text-gray-600 uppercase text-xs ">
+                                <th *ngFor="let h of displayHeader;let i = index" [ngStyle]="{'width': displayHeader[i].width + 'px','height' : '60px'}" class="py-3 text-center p-0 items-center">
+                                    <div (click)="setOrder(h.name)" class="flex justify-center items-center">
+                                        {{h.name | noOfFilesPipe}}
+                                        <a ><svg class="ml-1 w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512"><path *ngIf="displayHeader[i].name != button" d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/></svg></a>
+                                    </div> 
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </cdk-virtual-scroll-viewport>
+                <!--  table body-->
+                <div class="h-5/6 center-items text-center">
+                    <cdk-virtual-scroll-viewport #view2 itemSize="auto"  >
+                        <div class="min-w-max w-full items-center justify-center text-center" [hidden]="words.length > 0">
+                            <div class="p-3">
+                                {{tableText}}
+                                
+                            </div>
+                        </div>
+                        <div [hidden]="words.length < 1">
+                            <table class="min-w-max  w-full table-auto " >
+                                <tbody class="text-gray-600 text-sm font-light">
+                                        <tr  *cdkVirtualFor="let w of words;" class="border-b border-gray-200 hover:bg-gray-100">
+                                            <td *ngIf="headerIncludes(allHeaders[0].name)" [ngStyle]="{'width': allHeaders[0].width + 'px'}" class="py-3 p-0 items-center">
+                                                <div class="flex justify-center items-center">
+                                                    <span class="font-medium text-xs">{{w.title}}</span>
+                                                </div>
+                                            </td>
+                                            <td *ngIf="headerIncludes(allHeaders[1].name)" [ngStyle]="{'width': allHeaders[1].width + 'px'}" class="py-3 pp-0 items-center">
+                                                <div class="flex justify-center items-center">
+                                                    <span class="font-medium text-xs">{{w.categories}}</span> 
+                                                </div>
+                                            </td>
+                                            <td  *ngIf="headerIncludes(allHeaders[2].name)"[ngStyle]="{'width': allHeaders[2].width + 'px'}" class="py-3 p-0 text-center">
+                                                <div class="flex items-center justify-center">
+                                                    <span class="font-medium text-xs">{{this.selectedLang}}</span> 
+                                                </div>
+                                            </td>
+                                            <td *ngIf="headerIncludes(allHeaders[3].name)" [ngStyle]="{'width': allHeaders[3].width + 'px'}" class="py-3 p-0 text-center">
+                                                <span class="font-medium text-xs"><span [ngClass]="configureStatusClass(w.status)" class="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{{w.status}}</span></span>
+                                            </td>
+                                            <td *ngIf="headerIncludes(allHeaders[4].name)" [ngStyle]="{'width': allHeaders[4].width + 'px'}" class="py-3 p-0 text-center">
+                                                <span class="font-medium text-xs">{{GetNumberOfFiles(w)}}</span> 
+                                            </td>
+                                            <td  *ngIf="headerIncludes(allHeaders[5].name)" [ngStyle]="{'width': allHeaders[5].width + 'px'}" class="py-3 p-0 text-center">
+                                                <div class="flex item-center justify-center">
+                                                    <span class="font-medium text-xs">{{w.updatedAt | date}}</span>
+                                                </div>
+                                            </td>
+                                            <td *ngIf="headerIncludes(allHeaders[6].name)" [ngStyle]="{'width': allHeaders[6].width + 'px'}" class="py-3 p-0 text-center">
+                                                <div class="flex item-center justify-center">
+                                                    <span class="font-medium text-xs">{{w.updatedBy}}</span>
+                                                </div>
+                                            </td>
+                                            <td *ngIf="headerIncludes(allHeaders[7].name)" [ngStyle]="{'width': allHeaders[7].width + 'px'}" class="py-3 p-0 text-center">
+                                                <div class="flex item-center justify-center">
+                                                    <button  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" >Edit</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </cdk-virtual-scroll-viewport>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+        

@@ -1,0 +1,43 @@
+<div class="container  justify-content-center P-5 ">
+    
+    
+
+    <form [formGroup]="form">
+        <div 
+        appDragAndDropDirective 
+        class="file-drop-area" 
+        (fileDropped)="upload($event)"
+        >
+            <span class="choose-file-button w-2/4 h-2/4">
+                <div class="visible" id="buttonText">
+                    Choose files
+                </div>
+                <div class="hidden" id="loading">
+                    
+                    <svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+                        
+                    </svg>
+                    <span>cancel</span>
+                </div>
+            </span>
+            <span id="text" class="file-message">
+                or drag and drop files here
+            </span>
+            <span id="fileName" class="file-message">
+                {{fileName}}
+            </span>
+            <input 
+                #fileField 
+                (change)="upload($event)" 
+                name="avatars" 
+                class="file-input" 
+                type="file" 
+                multiple
+            >
+        </div>
+        
+    </form>
+</div>

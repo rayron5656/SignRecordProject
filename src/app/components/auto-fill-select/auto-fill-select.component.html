@@ -1,0 +1,9 @@
+<div  class="relative pb-2">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold my-2" for="grid-state">
+        {{this.label}}
+    </label>
+    <select (change)="selectOption(selector.value)" #selector class="block appearance-none w-full text-sm bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+        <option *ngFor="let o of options" [value]="o._id? o._id : o.name">{{o.name}}</option>
+    </select>
+    
+</div>
